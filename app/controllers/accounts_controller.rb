@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(account_params)
+    @account = Account.new(account_params.merge({user_id: current_user.id}))
 
     respond_to do |format|
       if @account.save
@@ -69,6 +69,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:username, :password)
+      params.require(:account).permit(:username, :password, :website_id)
     end
 end
