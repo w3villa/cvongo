@@ -1,0 +1,1 @@
+MERCHANTS = {:acres => "99acres", sulekha: "sulekha"}

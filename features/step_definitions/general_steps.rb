@@ -11,3 +11,8 @@ When(/^I log-in in 99acres$/) do
   step %{I fill in "password" with "#{@account.password}"}
   step %{I press "Login >>"}
 end
+
+When(/^I log-in in sulekha$/) do
+	@user = User.where(id: ENV["USER_ID"]).first
+  @account = @user.accounts.where({accounts: {website_id: 1}}).first
+end

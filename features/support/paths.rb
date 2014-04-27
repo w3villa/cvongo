@@ -11,6 +11,8 @@ module NavigationHelpers
 
     when /the 99acres sign in page/
     	'http://www.99acres.com/property/login.php'
+    when /the sulekha sign in page/
+      'http://www.sulekha.com/'
 
     else
       begin
