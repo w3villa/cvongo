@@ -4,6 +4,31 @@ And /^I should break$/ do
   puts "Debugger End"
 end
 
+Given /^I wait for (\d+) seconds?$/ do |n|
+  sleep(n.to_i)
+end
+
+And /^I switch window$/ do
+  page.driver.browser.switch_to.window(page.driver.browser.window_handles.last)
+end
+
+Then /^I should scrap cities$/ do
+  Nokogiri::HTML(page.html).css("#selectcity").children.each do |option|
+    p City.new({name: option.children.inner_text}).save
+  end
+end
+
+Then /^I should scrap localities$/ do
+  @city = City.where(id: ENV["CITY_ID"]).first
+  debugger
+  step %{I select "#{@city.name}" from "City"}
+  debugger
+  Nokogiri::HTML(page.html).css("select[name='Locality']").children.each do |option|
+    
+  end
+end
+
+
 When(/^I log-in in 99acres$/) do
   @user = User.where(id: ENV["USER_ID"]).first
   @account = @user.accounts.where({accounts: {website_name: MERCHANTS[:acres]}}).first

@@ -11,6 +11,10 @@ module HtmlSelectorsHelpers
 
     when "the page"
       "html > body"
+    when "Listing Pack"
+      "select[name='ListingCode']"
+    when "type of property"
+      "select[name='Type']"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

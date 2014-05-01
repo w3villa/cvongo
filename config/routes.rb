@@ -1,5 +1,11 @@
 Cvongo::Application.routes.draw do
   
+  resources :societies
+
+  resources :localities
+
+  resources :cities
+
   resources :accounts
 
   devise_for :users
